@@ -13,36 +13,24 @@
 
 # Lantern
 
-Lantern gives **Grounded 2** dedicated, always-on multiplayer worlds you join by IP and port. A host runs the Lantern server package next to Grounded 2 on a Windows box, players join through the Lantern desktop app, and the world stays on the server with snapshots, admin tools, server query, and a mod kit. No friend-code lobby, no peer-to-peer handoff, no host-must-be-online requirement.
+Lantern gives **Grounded 2** IP/port multiplayer: players join through the Lantern desktop app, hosts run a Lantern server package next to Grounded 2, and worlds stay on the server with snapshots, admin tools, server query, and a mod kit. No friend-code lobby, no peer-to-peer handoff, no host-must-be-online requirement.
 
-Lantern connects through stock Unreal Engine networking. The server stands up a direct-IP listen world and players join straight into it, so there is no Xbox sign-in or platform-party dependency to host or to play.
-
-A Lantern server runs the `g2_sshost` host overlay mod on the box. Players install the Lantern app, which ships the `LanternConnect` client mod that joins the hosted world. Stock Grounded 2 does not connect to Lantern servers directly.
+Every player must install Lantern to join a Lantern server. Stock Grounded 2 cannot connect to Lantern servers directly.
 
 <p align="center">
   <img src="docs/img/launcher.png" alt="Lantern launcher showing a Grounded 2 server" width="860">
 </p>
-
-<!--
-  NOTE: the README header images referenced above are not committed yet:
-    - docs/img/lantern-lockup-dark.png  (referenced at the top of this file)
-    - docs/img/lantern-lockup-light.png (referenced at the top of this file)
-    - docs/img/launcher.png             (referenced here)
-  These are net-new Lantern brand assets pending visual sign-off (see
-  docs/img/README.md). The references are intentionally kept so they resolve
-  once the assets land. Until then they render as broken-image placeholders.
--->
 
 ## Features
 
 ### 🏮 Join by IP and port
 Add a server address once, pick your character, and connect straight into the hosted world.
 
-### 🌐 Stock UE5 networking
-Lantern joins through plain Unreal `IpNetDriver` UDP — no Xbox sign-in, no platform party, no friend codes. The host stands up a direct-IP listen world and players connect straight into it.
+### 🌐 Stock UE networking
+Lantern joins through plain Unreal IpNetDriver UDP — no Xbox sign-in, no platform party, no friend codes.
 
 ### 💾 Server-side worlds
-The world lives on the host machine. The server can keep running after a player leaves, and save snapshots give admins a recovery point before major changes.
+The world lives on the host machine. The server keeps running after a player leaves, and snapshots give admins a recovery point before major changes.
 
 ### 🔁 Snapshots and rollback
 Admins can take snapshots, list saved worlds, and restore a previous world from Lantern's world tools or RCON.
@@ -51,7 +39,7 @@ Admins can take snapshots, list saved worlds, and restore a previous world from 
 Players can keep separate characters per server. Lantern remembers the character you used for each saved server.
 
 ### 🛠 Admin console
-LanternServer exposes Source RCON on the server's RCON port for commands like `help`, `status`, `players`, `ping`, `save snapshot`, and `save list`.
+LanternServer exposes Source RCON on the server's RCON port for commands like `help`, `status`, `players`, `save snapshot`, and `save list`.
 
 ### 📡 Server query
 LanternServer answers Source A2S query so server lists, monitoring tools, and bots can read status and player counts.
@@ -76,9 +64,9 @@ Lantern checks for launcher updates automatically on launch and while it is runn
 2. Extract it on the Windows host.
 3. Edit `LanternServer\appsettings.json`.
 4. Forward/open the gameplay UDP port, query UDP port, RCON TCP port, and admin HTTP TCP port.
-5. Run `LanternServer\LanternServer.exe`.
+5. Run `LanternServer\LanternServer.exe`. The server runs headless — no GPU is required.
 
-Full server setup, settings, source query examples, RCON commands, the runtime boot recipe, and build instructions live in [docs/RUNTIME.md](docs/RUNTIME.md) and [HumanGenome/LanternServer](https://github.com/HumanGenome/LanternServer).
+Full server setup, settings, source query examples, RCON commands, and build instructions live in [HumanGenome/LanternServer](https://github.com/HumanGenome/LanternServer).
 
 ## FAQ
 
@@ -89,7 +77,7 @@ Open Lantern, click Add Server, and enter a name, the server's IP or hostname, a
 No. The Lantern server runs its own copy of Grounded 2 in the background and your game client runs a second copy, and Steam only allows one running instance of a game per account. Run the server on a separate host and connect to it from your gaming PC.
 
 ### Can I import an existing save?
-Yes, from the server's world tools. The server takes a backup before importing and restarts on the imported world. Lantern remembers the character you used per server, so pick the matching character after the import.
+Yes, from the server's world tools. The server takes a backup before importing and restarts on the imported world.
 
 ### Is Linux supported?
 No. Lantern is Windows-only, for both the player app and the server (Windows 10/11/Server, 64-bit). The server launches the Windows build of Grounded 2 and uses Windows process management.
@@ -102,46 +90,23 @@ The public release page is intentionally simple:
 - `Lantern-Server-Windows-x64-v<version>.zip` — server package for hosts
 - `checksums.txt` — hashes for the release assets
 
-Source archives are generated by GitHub automatically for tags.
+If you only want to play on someone else's server, you need the installer, not the server zip. Source archives are generated by GitHub automatically for tags.
 
 ## Development
 
-This repository contains the Lantern app, server, runtime plugin, installer, and release automation.
+The Lantern app, server, runtime plugin, installer, and release automation live in the build repo.
 
 - `src/launcher/Lantern.Launcher` — Avalonia desktop app
 - `src/server/LanternServer` — host supervisor, RCON, query, HTTP admin API
-- `src/native/Lantern.Plugin` — UE4SS runtime plugin (identity/save hooks; reserved for v1)
-- `src/native/Lantern.RenderSuppress` — reference-only render-suppression plugin (see its README)
-- `src/tools/LanternCtl` — admin CLI
+- `src/native/Lantern.Plugin` — UE4SS runtime plugin
 - `installer` — NSIS installer
-- `dist/ue4ss-client` and `dist/ue4ss-server` — runtime UE4SS layouts; `dist/ue4ss-client` is the player join pack (`LanternConnect`), `dist/ue4ss-server` is the host overlay (the host mods live under `dist/ue4ss-server/Mods`)
-- `dist/engine-ini` — the validated Engine.ini host/client templates
-- `dist/warp` — WARP software-rasterizer redist notes for no-GPU boxes
-- `scripts` — dev-deploy and release helpers
-- `docs/RUNTIME.md` — the exact boot + host + CPU-affinity recipe
-
-Common local checks:
-
-```bash
-dotnet build src/launcher/Lantern.Launcher/Lantern.Launcher.csproj -c Release
-dotnet test tests/Lantern.Integration.Tests/Lantern.Integration.Tests.csproj -c Release
-bash scripts/dev-deploy.sh
-```
+- `dist/ue4ss-client` and `dist/ue4ss-server` — runtime UE4SS layouts; the host mods live under `dist/ue4ss-server/Mods`, the client join mod under `dist/ue4ss-client/Mods`
 
 ## Source
 
 LanternServer source is mirrored publicly at [HumanGenome/LanternServer](https://github.com/HumanGenome/LanternServer).
 
 The public Lantern repo at [HumanGenome/Lantern](https://github.com/HumanGenome/Lantern) is the download and documentation hub for released builds.
-
-## Known Limitations
-
-A few rough edges relative to the stock Grounded 2 experience:
-
-- **Every player needs the Lantern app.** Stock Grounded 2 cannot connect to a Lantern server directly. The desktop app ships the `LanternConnect` client mod that performs the direct-IP join; without it there is no way in.
-- **No code signing yet.** The installer is not code-signed, so Windows SmartScreen warns on first run. Choose **More info** then **Run anyway**.
-- **No-GPU hosts render on WARP.** A headless host with no physical GPU renders on the Microsoft WARP CPU software rasterizer. Per-instance load is bounded by CPU affinity, so a busy box runs fewer instances rather than starving them — host capacity is CPU-bound, not GPU-bound.
-- **Join can take a beat.** A fresh join completes its handshake in the background and the client waits patiently rather than failing fast, so the first connect to a cold server can take a little longer than a stock peer-to-peer join before the world renders.
 
 ## Community Note
 
