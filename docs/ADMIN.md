@@ -48,12 +48,20 @@ reach the listen socket.
 LanternServer exposes Source RCON on the RCON port:
 
 - `help` — list commands
-- `status` — server status
+- `status` — game and runtime state
 - `players` — connected players
 - `ping` — liveness
 - `save snapshot` — take a world snapshot
-- `save list` — list saved worlds
-- `save restore <id>` — roll the world back to a snapshot
+- `save list` — list recent snapshots
+- `say <msg>` — broadcast as the server
+- `announce <msg>` — broadcast on the admin channel
+- `motd [msg]` — read or set the message of the day
+
+Restoring a snapshot is not an RCON command. Use the admin HTTP API on the HTTP
+port (`GET /api/v1/snapshots` to list, `POST /api/v1/snapshots/<id>/restore` to
+roll back, `POST /api/v1/snapshots/import-restore` to restore an uploaded world)
+or the launcher's world tools. Admin routes are HMAC-signed with a key derived
+from the RCON password.
 
 ## Server query
 

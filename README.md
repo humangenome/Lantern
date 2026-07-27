@@ -33,7 +33,7 @@ Lantern joins through plain Unreal IpNetDriver UDP — no Xbox sign-in, no platf
 The world lives on the host machine. The server keeps running after a player leaves, and snapshots give admins a recovery point before major changes.
 
 ### 🔁 Snapshots and rollback
-Admins can take snapshots, list saved worlds, and restore a previous world from Lantern's world tools or RCON.
+The server snapshots the world on every auto-save and on demand. Admins can list snapshots, roll the world back to one, or upload and restore a world from Lantern's world tools.
 
 ### 🧑‍🤝‍🧑 Multiple characters
 Players can keep separate characters per server. Lantern remembers the character you used for each saved server.
