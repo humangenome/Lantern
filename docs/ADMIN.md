@@ -11,6 +11,7 @@ LanternServer\
 ├── appsettings.json           per-instance config
 ue4ss\                         host-side UE4SS layout (g2_sshost host-start mod)
 engine-ini\                    Engine.ini host/client templates
+redist\                        WARP software renderer + the UE4SS proxy DLL
 warp\                          WARP redist notes
 host-instance.ps1              launch + CPU-affinity helper
 steam_appid.txt
@@ -61,6 +62,22 @@ tool, monitor, or bot can read status and player count.
 
 ## Running
 
-Use `host-instance.ps1` to launch — it applies the Engine.ini host template,
-launches Grounded 2 with the WARP args, and pins the process to its CPU-core
-mask. See `RUNTIME.md` for the full boot recipe and density model.
+Use `host-instance.ps1` to launch. It applies the Engine.ini host template with
+this instance's real gameplay port, launches Grounded 2 with the WARP software
+renderer, and pins the process to a fixed set of CPU cores.
+
+A few things that are load-bearing on a box with no GPU:
+
+- `-dx12 -WARP` go together. Unreal does not support WARP under D3D11.
+- Never pass `-nullrhi`. It crashes Grounded 2's render branch.
+- Copy `redist\d3d10warp.dll` next to the Grounded 2 shipping exe. The in-box
+  Windows WARP does not clear Unreal's SM6 adapter check; this one does.
+- Steam must be logged in on the host. A logged-out Steam exits at a re-login
+  gate, which is an account state rather than a Lantern fault.
+- Kill any leftover `CrashReportClient*` and `WerFault` processes before
+  relaunching, or they wedge the next start.
+
+WARP renders on the CPU, so one instance will use a whole machine if you let it.
+`host-instance.ps1` bounds each instance to a disjoint block of cores derived
+from its gameplay port, which is how you fit more than one instance on a box. It
+refuses to start rather than overlap another instance's cores.
