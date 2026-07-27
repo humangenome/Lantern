@@ -22,8 +22,12 @@ this for the host package).
 
 ## Lantern's own mods
 
-- `g2_sshost` (host) — issues `open <map>?listen` to stand up the listen world.
-- `LanternConnect` (client) — issues `open <ip>:<port>` to join.
+- `g2_sshost` (host) — drives the host through the lobby into the survival world
+  and keeps the connected players with it. It can also re-issue
+  `open <map>?listen`, but that is a fallback: the listen socket normally comes
+  up from the host `Engine.ini` before any mod runs.
+- `LanternConnect` (client) — issues `open <ip>:<port>` to join, and waits for
+  the game's own sign-in and main menu before it does.
 
 ## Writing your own
 
