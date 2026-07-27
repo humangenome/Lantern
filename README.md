@@ -50,7 +50,7 @@ Lantern loads Lua and C++ mods through UE4SS on both the client and the host. Se
 ## Install
 
 ### Managed hosting
-The shortest path is [SurvivalServers.com Grounded 2 hosting](https://www.survivalservers.com/services/game_servers/grounded_2/?utm_source=github&utm_medium=readme_install&utm_campaign=lantern). Lantern is already installed, ports are handled, and the panel shows a one-click Lantern setup link for players.
+The shortest path is [SurvivalServers.com Grounded 2 hosting](https://www.survivalservers.com/services/game_servers/grounded2/?utm_source=github&utm_medium=readme_install&utm_campaign=lantern). Lantern is already installed, ports are handled, and the panel shows a one-click Lantern setup link for players.
 
 ### Players
 1. Download `LanternSetup-<version>.exe` from the [latest release](https://github.com/HumanGenome/Lantern/releases/latest).
