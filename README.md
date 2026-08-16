@@ -24,7 +24,7 @@ Every player must install Lantern to join a Lantern server. Stock Grounded 2 can
 ## Features
 
 ### 🏮 Join by IP and port
-Add a server address once, pick your character, and connect straight into the hosted world.
+Add a server address once and connect straight into the hosted world.
 
 ### 🌐 Stock UE networking
 Lantern joins through plain Unreal IpNetDriver UDP — no Xbox sign-in, no platform party, no friend codes.
@@ -34,9 +34,6 @@ The world lives on the host machine. The server keeps running after a player lea
 
 ### 🔁 Snapshots and rollback
 The server snapshots the world on every auto-save and on demand. Admins can list snapshots, roll the world back to one, or upload and restore a world from Lantern's world tools.
-
-### 🧑‍🤝‍🧑 Multiple characters
-Players can keep separate characters per server. Lantern remembers the character you used for each saved server.
 
 ### 🛠 Admin console
 LanternServer exposes Source RCON on the server's RCON port for commands like `help`, `status`, `players`, `save snapshot`, and `save list`.
@@ -55,7 +52,7 @@ The shortest path is [SurvivalServers.com Grounded 2 hosting](https://www.surviv
 ### Players
 1. Download `LanternSetup-<version>.exe` from the [latest release](https://github.com/HumanGenome/Lantern/releases/latest).
 2. Run the installer. Windows SmartScreen may warn because the installer is not code-signed yet; choose **More info** then **Run anyway**.
-3. Open Lantern, add the server address, select or create a character, and click **Connect**.
+3. Open Lantern, add the server address, and click **Connect**.
 
 Lantern checks for launcher updates automatically on launch and while it is running.
 
@@ -71,7 +68,7 @@ Full server setup, settings, source query examples, RCON commands, and build ins
 ## FAQ
 
 ### How do I join a server?
-Open Lantern, click Add Server, and enter a name, the server's IP or hostname, and its gameplay port. Add the join key if the server uses one. Lantern derives the query, RCON, and admin ports from the gameplay port, so you only enter the one port. Select the server, pick or create a character, and click Connect.
+Open Lantern, click Add Server, and enter a name, the server's IP or hostname, and its gameplay port. Add the join key if the server uses one. Lantern derives the query, RCON, and admin ports from the gameplay port, so you only enter the one port. Select the server and click Connect.
 
 ### Can I run the server on the same machine I play on?
 No. The Lantern server runs its own copy of Grounded 2 in the background and your game client runs a second copy, and Steam only allows one running instance of a game per account. Run the server on a separate host and connect to it from your gaming PC.
