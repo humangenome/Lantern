@@ -2,8 +2,7 @@
 
 README/docs images:
 
-- `lantern-lockup-light.png` / `lantern-lockup-dark.png` — approved warm orange
-  Lantern README header lockup, restored on 2026-08-25. Keep both theme
-  variants aligned with the launcher and preview the rendered README before
-  replacing either asset.
-- `launcher.png` — Lantern launcher screenshot
+- `lantern-lockup-light.png` / `lantern-lockup-dark.png`: the Lantern README header
+  lockup for light and dark themes. Keep both aligned with the app and preview the
+  rendered README before replacing either.
+- `launcher.png`: screenshot of the Lantern app

@@ -1,7 +1,7 @@
 # Lantern server admin guide
 
-Generic admin guide for running a self-hosted LanternServer. Managed-hosting
-customers should use their host's panel instead — these are the raw controls.
+Admin guide for running a self-hosted LanternServer. Managed-hosting customers
+should use their host's panel instead; these are the raw controls.
 
 ## Server package layout
 
@@ -21,10 +21,10 @@ steam_appid.txt
 
 The `Lantern` block carries the per-instance config. At minimum set:
 
-- `InstanceId` — a stable id for this instance
+- `InstanceId`: a stable id for this instance
 - `GameplayPort` / query / RCON / HTTP ports (see ports below)
-- `RconPassword` — required to use RCON
-- `ServerName` — shown in the server query / browser
+- `RconPassword`: required to use RCON
+- `ServerName`: shown in the server query / browser
 
 `Mods` settings nest **under** the `Lantern` block, not at the top level.
 
@@ -33,7 +33,7 @@ The `Lantern` block carries the per-instance config. At minimum set:
 | Offset | Default | Purpose | Proto |
 |--------|---------|---------|-------|
 | +0 | 7777 | Gameplay (the join port) | UDP |
-| +1 | 7778 | Control / IPC identifier (local only) | — |
+| +1 | 7778 | Control / IPC identifier (local only) | none |
 | +2 | 7779 | Server query (A2S) | UDP |
 | +3 | 7780 | RCON | TCP |
 | +4 | 7781 | Admin HTTP API | TCP |
@@ -47,20 +47,20 @@ reach the listen socket.
 
 LanternServer exposes Source RCON on the RCON port:
 
-- `help` — list commands
-- `status` — game and runtime state
-- `players` — connected players
-- `ping` — liveness
-- `save snapshot` — take a world snapshot
-- `save list` — list recent snapshots
-- `say <msg>` — broadcast as the server
-- `announce <msg>` — broadcast on the admin channel
-- `motd [msg]` — read or set the message of the day
+- `help`: list commands
+- `status`: game and runtime state
+- `players`: connected players
+- `ping`: liveness
+- `save snapshot`: take a world snapshot
+- `save list`: list recent snapshots
+- `say <msg>`: post a message as the server
+- `announce <msg>`: post on the admin channel
+- `motd [msg]`: read or set the message of the day
 
 Restoring a snapshot is not an RCON command. Use the admin HTTP API on the HTTP
 port (`GET /api/v1/snapshots` to list, `POST /api/v1/snapshots/<id>/restore` to
 roll back, `POST /api/v1/snapshots/import-restore` to restore an uploaded world)
-or the launcher's world tools. Admin routes are HMAC-signed with a key derived
+or the app's World window. Admin routes are HMAC-signed with a key derived
 from the RCON password.
 
 ## Server query

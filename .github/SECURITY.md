@@ -27,7 +27,7 @@ In scope:
 
 Out of scope:
 
-- Vulnerabilities in the host machine itself — those belong to whoever runs it
-- Vulnerabilities in retail Grounded 2 — report those to the game's publisher
+- Vulnerabilities in the host machine itself: those belong to whoever runs it
+- Vulnerabilities in retail Grounded 2: report those to the game's publisher
 - Vulnerabilities in third-party mods running on Lantern
 - Cheating and anti-cheat concerns. Lantern does not provide anti-cheat.
