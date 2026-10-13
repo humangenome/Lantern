@@ -20,7 +20,7 @@ Grounded 2 has no dedicated server. Its multiplayer runs inside one player's gam
 Every player must install Lantern to join a Lantern server. Stock Grounded 2 cannot connect to a Lantern server directly.
 
 <p align="center">
-  <img src="docs/img/launcher.png" alt="The Lantern app: a saved Grounded 2 server with its status, ping and player count" width="860">
+  <img src="docs/img/launcher.png" alt="The Lantern app: a saved Grounded 2 server with its status, ping, players and the Connect button" width="860">
 </p>
 
 ## Features
@@ -29,10 +29,18 @@ Every player must install Lantern to join a Lantern server. Stock Grounded 2 can
 Add the server's address and gameplay port in the app and click Connect. The app puts its join mod next to your game files, starts Grounded 2 and joins the server. The server list shows whether each server is up, its ping and how many players are on it.
 
 ### 💾 World backups
-The server takes a snapshot of the world every time the game autosaves. The app's World window takes a snapshot on demand, rolls the world back to an earlier one, or uploads a Grounded 2 save from your own PC so the group carries on from it on the server.
+LanternServer keeps snapshots of the world: on every autosave by default on a self-hosted server, and on demand with `save snapshot`. On servers running LanternServer 0.1.122 or newer, the app's World window lists them, rolls the world back to one, or uploads a Grounded 2 save from your own PC so the group carries on from it on the server. It asks before it replaces the world.
+
+<p align="center">
+  <img src="docs/img/world-backups.png" alt="The Lantern World window: a server's snapshots with Refresh, Download and Restore, and the import button" width="860">
+</p>
 
 ### 🖥️ Console in the app
 The Console tab talks to the server's RCON port with the admin password: `status`, `players`, `save snapshot`, `save list`, `say`, `announce` and `motd`, without a separate RCON tool.
+
+<p align="center">
+  <img src="docs/img/console.png" alt="The Lantern Console tab connected to a server, showing status, save snapshot and save list" width="860">
+</p>
 
 ### 📡 Server query
 LanternServer answers Source A2S query, so server lists, monitoring tools and Discord bots can read the server's name, status and player count.
@@ -85,7 +93,7 @@ Open Lantern, click **+**, and enter a name, the server's IP or hostname, and it
 Lantern installs UE4SS and its join mod into the Grounded 2 game folder when you connect. It does not change the game's own files, and Steam updates the game as usual.
 
 ### Can I bring my own world?
-Yes. Open the server's **World** window in the app and upload the save folder from your PC. The server takes a snapshot first and restarts on the uploaded world.
+Yes, on a server running LanternServer 0.1.122 or newer: open the server's **World** window in the app and upload a zip of the save folder from your PC. The server keeps a copy of the current world first and restarts on the uploaded one. On a hosted server, your host can also place it for you.
 
 ### Can I run the server on the PC I play on?
 Run it on a separate machine. The server runs its own copy of Grounded 2, and Steam allows one running copy per account.
