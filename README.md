@@ -49,6 +49,8 @@ UE4SS Lua mods load on both the server and the players' games. See [docs/MODS.md
 [SurvivalServers.com Grounded 2 hosting](https://www.survivalservers.com/services/game_servers/grounded2/?utm_source=github&utm_medium=readme_install&utm_campaign=lantern) runs LanternServer for you, handles the ports and updates, and its panel gives players a one-click Lantern setup link.
 
 ### Players
+Lantern works with the Steam version of Grounded 2 on Windows. Xbox, PlayStation and Game Pass or Microsoft Store copies cannot join a Lantern server.
+
 1. Download `LanternSetup-latest.exe` from the [latest release](https://github.com/HumanGenome/Lantern/releases/latest).
 2. Run the installer. Windows SmartScreen may warn because the installer is not code-signed; choose **More info**, then **Run anyway**.
 3. Open Lantern, click **+**, enter the server's address and gameplay port, then select it and click **Connect**.
@@ -72,6 +74,9 @@ The server package (`LanternServer-v<version>.zip`) is published on the [Lantern
 The server's .NET source is public at [HumanGenome/LanternServer](https://github.com/HumanGenome/LanternServer). The app and the in-game runtime ship as release binaries from this repo.
 
 ## FAQ
+
+### Which copy of Grounded 2 do players need?
+The Steam version on a Windows PC. Lantern is built and tested against the Steam release, so Xbox, PlayStation and Game Pass or Microsoft Store copies cannot join, and neither can crossplay friends on those platforms.
 
 ### How do I join a server?
 Open Lantern, click **+**, and enter a name, the server's IP or hostname, and its gameplay port. Lantern finds the query, RCON and admin ports from the gameplay port, so you enter only the one port. Select the server and click **Connect**.
