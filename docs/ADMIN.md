@@ -1,7 +1,7 @@
 # Lantern server admin guide
 
-Admin guide for running a self-hosted LanternServer. Managed-hosting customers
-should use their host's panel instead; these are the raw controls.
+Admin guide for running a self-hosted LanternServer. If you rent a hosted server,
+use your host's panel instead; these are the raw controls.
 
 ## Server package layout
 

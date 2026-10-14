@@ -53,7 +53,7 @@ UE4SS Lua mods load on both the server and the players' games. See [docs/MODS.md
 
 ## Install
 
-### Managed hosting
+### Rent a server
 [SurvivalServers.com Grounded 2 hosting](https://www.survivalservers.com/services/game_servers/grounded2/?utm_source=github&utm_medium=readme_install&utm_campaign=lantern) runs LanternServer for you, handles the ports and updates, and its panel gives players a one-click Lantern setup link.
 
 ### Players
