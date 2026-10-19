@@ -64,7 +64,7 @@ Lantern works with the Steam version of Grounded 2 on Windows. Xbox, PlayStation
 3. Open Lantern, click **+**, enter the server's address and gameplay port, then select it and click **Connect**.
 
 ### Self-hosted servers
-Download `LanternServer-v<version>.zip` from the [latest LanternServer release](https://github.com/HumanGenome/LanternServer/releases/latest). The host needs its own copy of Grounded 2 from Steam, a public IP and open ports. Setup, settings, ports and RCON commands are in [HumanGenome/LanternServer](https://github.com/HumanGenome/LanternServer) and [docs/ADMIN.md](docs/ADMIN.md).
+Not supported yet. The server package only runs with the per-server setup a hosting panel does around it, and started on its own it never opens a server port ([details](https://github.com/HumanGenome/LanternServer#self-hosting)). Settings, ports and RCON commands for a rented server are in [docs/ADMIN.md](docs/ADMIN.md).
 
 ## Releases
 
@@ -96,7 +96,7 @@ Lantern installs UE4SS and its join mod into the Grounded 2 game folder when you
 Yes, on a server running LanternServer 0.1.122 or newer: open the server's **World** window in the app and upload a zip of the save folder from your PC. The server keeps a copy of the current world first and restarts on the uploaded one. On a hosted server, your host can also place it for you.
 
 ### Can I run the server on the PC I play on?
-Run it on a separate machine. The server runs its own copy of Grounded 2, and Steam allows one running copy per account.
+No. Self-hosting is not supported yet (see Install), and a Lantern server runs its own copy of Grounded 2 on a separate machine.
 
 ### Is Linux supported?
 No. The app and the server are Windows only (Windows 10/11 or Windows Server, 64-bit), because the server runs the Windows build of Grounded 2.

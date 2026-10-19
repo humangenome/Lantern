@@ -1,7 +1,7 @@
 # Lantern server admin guide
 
-Admin guide for running a self-hosted LanternServer. If you rent a hosted server,
-use your host's panel instead; these are the raw controls.
+Settings, ports and RCON commands of a LanternServer. Self-hosting is not supported yet (see Running), so these
+are the raw controls behind a rented server; your host's panel sets them for you.
 
 ## Server package layout
 
@@ -70,22 +70,8 @@ tool, monitor, or bot can read status and player count.
 
 ## Running
 
-Use `host-instance.ps1` to launch. It applies the Engine.ini host template with
-this instance's real gameplay port, launches Grounded 2 with the WARP software
-renderer, and pins the process to a fixed set of CPU cores.
-
-A few things that are load-bearing on a box with no GPU:
-
-- `-dx12 -WARP` go together. Unreal does not support WARP under D3D11.
-- Never pass `-nullrhi`. It crashes Grounded 2's render branch.
-- Copy `redist\d3d10warp.dll` next to the Grounded 2 shipping exe. The in-box
-  Windows WARP does not clear Unreal's SM6 adapter check; this one does.
-- Steam must be logged in on the host. A logged-out Steam exits at a re-login
-  gate, which is an account state rather than a Lantern fault.
-- Kill any leftover `CrashReportClient*` and `WerFault` processes before
-  relaunching, or they wedge the next start.
-
-WARP renders on the CPU, so one instance will use a whole machine if you let it.
-`host-instance.ps1` bounds each instance to a disjoint block of cores derived
-from its gameplay port, which is how you fit more than one instance on a box. It
-refuses to start rather than overlap another instance's cores.
+Self-hosting is not supported yet. The server package runs only inside the per-server setup a hosting panel does
+around it: it puts the UE4SS runtime and the host mod into the game folder, writes the game's Engine.ini and
+launch settings for that server, starts the game with the environment the host mod reads, and watches it.
+`host-instance.ps1` in the package does none of that; it only launches the game and pins it to two cores. Started
+that way (tested 2026-10-19), Grounded 2 never opened a server port and LanternServer reported the game as down.
