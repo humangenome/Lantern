@@ -1,14 +1,13 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/img/lantern-lockup-dark.png">
-    <img src="docs/img/lantern-lockup-light.png" alt="Lantern" width="480">
+    <source media="(prefers-color-scheme: dark)" srcset="docs/img/lantern-logo-dark.png">
+    <img src="docs/img/lantern-logo-light.png" alt="Lantern" width="480">
   </picture>
 </p>
 
 <p align="center">
   <a href="#install"><img src="https://img.shields.io/badge/Platform-Windows_10%2F11%2FServer-blue.svg" alt="Platform"></a>
   <a href="https://store.steampowered.com/app/2661300/"><img src="https://img.shields.io/badge/Game-Grounded_2-darkgreen.svg" alt="Game"></a>
-  <a href="#install"><img src="https://img.shields.io/badge/Players-up_to_4-brightgreen.svg" alt="Players"></a>
   <a href="https://github.com/HumanGenome/LanternServer"><img src="https://img.shields.io/badge/Server_Source-LanternServer-444.svg" alt="Server Source"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-lightgrey.svg" alt="License"></a>
 </p>
@@ -19,14 +18,14 @@ Grounded 2 has no dedicated server. Its multiplayer runs inside one player's gam
 
 Every player must install Lantern to join a Lantern server. Stock Grounded 2 cannot connect to a Lantern server directly.
 
-<p align="center">
-  <img src="docs/img/launcher.png" alt="The Lantern app: a saved Grounded 2 server with its status, ping, players and the Connect button" width="860">
-</p>
-
 ## Features
 
 ### 🏮 Join by address
 Add the server's address and gameplay port in the app and click Connect. The app puts its join mod next to your game files, starts Grounded 2 and joins the server. The server list shows whether each server is up, its ping and how many players are on it. If the server has a password, the app asks for it once and checks it before it starts the game; on LanternServer 0.1.123 or newer, a player without the right password is sent back to the menu.
+
+<p align="center">
+  <img src="docs/img/app-v0.1.126-servers.png" alt="The Lantern app with two saved Grounded 2 servers online, who is on the selected one, their ping, and the Connect button" width="860">
+</p>
 
 ### 💾 World backups
 LanternServer keeps snapshots of the world: on every autosave by default on a self-hosted server, and on demand with `save snapshot`. On servers running LanternServer 0.1.122 or newer, the app's World window lists them, rolls the world back to one, or uploads a Grounded 2 save from your own PC so the group carries on from it on the server. It asks before it replaces the world.
@@ -39,17 +38,12 @@ LanternServer keeps snapshots of the world: on every autosave by default on a se
 The Console tab talks to the server's RCON port with the admin password: `status`, `players`, `save snapshot`, `save list`, `say`, `announce` and `motd`, without a separate RCON tool.
 
 <p align="center">
-  <img src="docs/img/console.png" alt="The Lantern Console tab connected to a server, showing status, save snapshot and save list" width="860">
+  <img src="docs/img/app-v0.1.126-console.png" alt="The Lantern Console tab connected to a server, after the status and players commands" width="860">
 </p>
 
-### 📡 Server query
-LanternServer answers Source A2S query, so server lists, monitoring tools and Discord bots can read the server's name, status and player count.
-
-### 🔄 Updates itself
-The app checks for new versions while it runs, verifies each signed download and installs it when you close the app.
-
-### 🧩 Mods
-UE4SS Lua mods load on both the server and the players' games. See [docs/MODS.md](docs/MODS.md).
+### Also on the server
+- **Mods:** UE4SS Lua mods load on both the server and the players' games. See [docs/MODS.md](docs/MODS.md).
+- **Server query:** LanternServer answers Source A2S query, so server lists, monitoring tools and Discord bots can read the server's name, status and player count.
 
 ## Install
 
@@ -89,6 +83,9 @@ The Steam version on a Windows PC. Lantern is built and tested against the Steam
 ### How do I join a server?
 Open Lantern, click **+**, and enter a name, the server's IP or hostname, and its gameplay port. Lantern finds the query, RCON and admin ports from the gameplay port, so you enter only the one port. Select the server and click **Connect**.
 
+### How many players can join?
+The host sets the server's slot count, and Grounded 2's co-op is built for four: the character select offers four kids. On today's server the server holds one of the four kids for itself, so a fourth player can join but cannot pick that kid.
+
 ### Does it change my game?
 Lantern installs UE4SS and its join mod into the Grounded 2 game folder when you connect. It does not change the game's own files, and Steam updates the game as usual.
 
@@ -97,6 +94,9 @@ Yes, on a server running LanternServer 0.1.122 or newer: open the server's **Wor
 
 ### Can I run the server on the PC I play on?
 No. Self-hosting is not supported yet (see Install), and a Lantern server runs its own copy of Grounded 2 on a separate machine.
+
+### Does the app update itself?
+Yes. It checks for new versions while it runs, verifies each signed download and installs it when you close the app.
 
 ### Is Linux supported?
 No. The app and the server are Windows only (Windows 10/11 or Windows Server, 64-bit), because the server runs the Windows build of Grounded 2.
