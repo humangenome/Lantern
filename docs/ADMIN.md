@@ -53,9 +53,6 @@ LanternServer exposes Source RCON on the RCON port:
 - `ping`: liveness
 - `save snapshot`: take a world snapshot
 - `save list`: list recent snapshots
-- `say <msg>`: post a message as the server
-- `announce <msg>`: post on the admin channel
-- `motd [msg]`: read or set the message of the day
 
 Restoring a snapshot is not an RCON command. Use the admin HTTP API on the HTTP
 port (`GET /api/v1/snapshots` to list, `POST /api/v1/snapshots/<id>/restore` to

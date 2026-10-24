@@ -35,7 +35,7 @@ LanternServer keeps snapshots of the world: on every autosave by default on a se
 </p>
 
 ### 🖥️ Console in the app
-The Console tab talks to the server's RCON port with the admin password: `status`, `players`, `save snapshot`, `save list`, `say`, `announce` and `motd`, without a separate RCON tool.
+The Console tab talks to the server's RCON port with the admin password: `status`, `players`, `save snapshot` and `save list`, without a separate RCON tool.
 
 <p align="center">
   <img src="docs/img/app-v0.1.126-console.png" alt="The Lantern Console tab connected to a server, after the status and players commands" width="860">
