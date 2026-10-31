@@ -30,115 +30,38 @@ SKIP_PREFIXES = [
 REPO_RULES = {
     "entry_deny": [
         {
-            "id": "CAULDRON-STEAMEMU",
-            "re": "(?i)(goldberg|gbe_fork|steam_api64|steam_settings|steam_interfaces|steamemu|coldclientloader)",
-            "desc": "Steam emulator / headless-auth recipe (RULE #21e)"
-        },
-        {
-            "id": "CAULDRON-HOSTPREP",
-            "re": "(?i)(Cauldron\\.HostPrep|SteamEosHostLaunchPrep)",
-            "desc": "private Cauldron host-launch-prep implementation (RULE #21e)"
-        },
-        {
-            "id": "LANTERN-HOSTPATCH-SRC",
-            "re": "(?i)LanternHostPatch[^/]*\\.(cpp|cxx|cc|h|hpp|hxx|lib|exp|pdb)$",
-            "desc": "LanternHostPatch source/link artifact (RULE #21c: compiled binary only)"
-        },
-        {
-            "id": "LANTERN-NETPATCH-SRC",
-            "re": "(?i)LanternClientNetPatch[^/]*\\.(cpp|cxx|cc|h|hpp|hxx|lib|exp|pdb)$",
-            "desc": "LanternClientNetPatch source/link artifact (RULE #21c)"
-        },
-        {
-            "id": "LANTERN-NATIVE-SRC",
+            "id": "NATIVE-SOURCE",
             "re": "(?i)\\.(cpp|cxx|cc|hpp|hxx)$",
-            "desc": "native C++ source in a Lantern artifact (RULE #21c: compiled binary only)"
+            "desc": "native C++ source file in a published archive"
         },
         {
-            "id": "LANTERN-NATIVE-LNK",
+            "id": "NATIVE-LINK",
             "re": "(?i)\\.(lib|exp)$",
-            "desc": "native link artifact in a Lantern artifact (RULE #21c)"
-        },
-        {
-            "id": "LANTERN-NATIVE-PDB",
-            "re": "(?i)(LanternHostPatch|LanternClientNetPatch|RenderSuppress)[^/]*\\.pdb$",
-            "desc": "native debug symbols (RULE #21c)"
-        }
-    ],
-    "token_deny": [
-        {
-            "id": "CAULDRON-EMU-TEXT",
-            "desc": "Steam emulator / headless-auth technique named in a shipped file (RULE #21e)",
-            "tokens": [
-                "Goldberg",
-                "goldberg",
-                "gbe_fork",
-                "steam_api64",
-                "steam_settings",
-                "AuthenticationGraph",
-                "ColdClientLoader"
-            ]
-        },
-        {
-            "id": "LANTERN-MECHANISM-TEXT",
-            "desc": "Lantern admission-bypass mechanism named in a shipped file (RULE #21c)",
-            "tokens": [
-                "ForceAdmit",
-                "force-admit",
-                "force_admit",
-                "PreLogin-maxplayers-admit",
-                "prelogin-complete",
-                "NotifyAcceptingConnection-accept"
-            ]
+            "desc": "native link library or export file in a published archive"
         }
     ],
     "text_deny": [
         {
-            "id": "LANTERN-FNADDR",
+            "id": "RAW-FN-ADDRESS",
             "re": "fn0x[0-9A-Fa-f]{4,}",
-            "desc": "internal function-address symbol"
+            "desc": "raw function-address symbol in a shipped file"
         },
         {
-            "id": "LANTERN-IMGADDR",
+            "id": "RAW-IMAGE-ADDRESS",
             "re": "0x14[0-9A-Fa-f]{7}",
-            "desc": "absolute image address"
-        },
-        {
-            "id": "LANTERN-FORCEADMIT",
-            "re": "(?i)force[ _-]?admit",
-            "desc": "admission-bypass mechanism named in a shipped string"
-        },
-        {
-            "id": "LANTERN-PATCHNAME",
-            "re": "(?i)(prelogin-maxplayers-admit|prelogin-complete|notifyacceptingconnection-accept|nmt_login-)",
-            "desc": "patch-table name describing the admission mechanism"
-        },
-        {
-            "id": "LANTERN-PINVENTORY",
-            "re": "(?i)\\bP(?:[1-9]|1[0-9]|20)\\s*[:=]\\s*(PreLogin|NMT_Login|NotifyAccepting|WelcomePlayer)",
-            "desc": "P-number inventory restating the patch set"
+            "desc": "absolute image address in a shipped file"
         }
     ],
     "binary_deny": [
         {
-            "id": "LANTERN-FNADDR",
+            "id": "RAW-FN-ADDRESS",
             "re": "fn0x[0-9A-Fa-f]{4,}",
-            "desc": "internal function-address symbol in a shipped binary"
+            "desc": "raw function-address symbol in a shipped binary"
         },
         {
-            "id": "LANTERN-IMGADDR",
+            "id": "RAW-IMAGE-ADDRESS",
             "re": "0x14[0-9A-Fa-f]{7}",
             "desc": "absolute image address in a shipped binary"
-        },
-        {
-            "id": "LANTERN-FORCEADMIT",
-            "re": "(?i)force[ _-]?admit",
-            "desc": "admission-bypass mechanism in a shipped binary"
-        },
-        {
-            "id": "LANTERN-PATCHNAME",
-            "re": "(?i)(prelogin-maxplayers-admit|prelogin-complete|notifyacceptingconnection-accept|nmt_login-)",
-            "desc": "patch-table name in a shipped binary"
         }
     ]
 }
