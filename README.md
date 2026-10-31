@@ -21,24 +21,24 @@ Every player must install Lantern to join a Lantern server. Stock Grounded 2 can
 ## Features
 
 ### 🏮 Join by address
-Add the server's address and gameplay port in the app and click Connect. The app puts its join mod next to your game files, starts Grounded 2 and joins the server. The server list shows whether each server is up, its ping and how many players are on it. If the server has a password, the app asks for it once and checks it before it starts the game; on LanternServer 0.1.123 or newer, a player without the right password is sent back to the menu.
+Add the server's address and gameplay port in the app and click Connect. The app puts its join mod next to your game files, starts Grounded 2 and joins the server. The server list shows whether each server is up, its ping and how many players are on it. If the server has a password, the app asks for it once and checks it before it starts the game; a player without the right password is sent back to the menu.
 
 <p align="center">
-  <img src="docs/img/app-v0.1.126-servers.png" alt="The Lantern app with two saved Grounded 2 servers online, who is on the selected one, their ping, and the Connect button" width="860">
+  <img src="docs/img/app-v0.1.130-servers.png" alt="The Lantern app with two saved Grounded 2 servers online, who is on the selected one, their ping, and the Connect button" width="860">
 </p>
 
 ### 💾 World backups
-LanternServer keeps snapshots of the world: on every autosave by default on a self-hosted server, and on demand with `save snapshot`. On servers running LanternServer 0.1.122 or newer, the app's World window lists them, rolls the world back to one, or uploads a Grounded 2 save from your own PC so the group carries on from it on the server. It asks before it replaces the world.
+LanternServer saves a snapshot of the world when you run `save snapshot` in the Console, and before every restore or upload. The app's World window lists them, rolls the world back to one, or uploads a Grounded 2 save from your PC so the group carries on from it. It asks before it replaces the world.
 
 <p align="center">
-  <img src="docs/img/world-backups.png" alt="The Lantern World window: a server's snapshots with Refresh, Download and Restore, and the import button" width="860">
+  <img src="docs/img/app-v0.1.130-world.png" alt="The Lantern World window: a server's snapshots with Refresh, Download and Restore, and the import button" width="600">
 </p>
 
 ### 🖥️ Console in the app
 The Console tab talks to the server's RCON port with the admin password: `status`, `players`, `save snapshot` and `save list`, without a separate RCON tool.
 
 <p align="center">
-  <img src="docs/img/app-v0.1.126-console.png" alt="The Lantern Console tab connected to a server, after the status and players commands" width="860">
+  <img src="docs/img/app-v0.1.130-console.png" alt="The Lantern Console tab connected to a server, after the status and players commands" width="860">
 </p>
 
 ### Also on the server
@@ -84,13 +84,13 @@ The Steam version on a Windows PC. Lantern is built and tested against the Steam
 Open Lantern, click **+**, and enter a name, the server's IP or hostname, and its gameplay port. Lantern finds the query, RCON and admin ports from the gameplay port, so you enter only the one port. Select the server and click **Connect**.
 
 ### How many players can join?
-The host sets the server's slot count, and Grounded 2's co-op is built for four: the character select offers four kids. On today's server the server holds one of the four kids for itself, so a fourth player can join but cannot pick that kid.
+Up to four. Grounded 2's character select has four kids, and a Lantern server holds four players at most. The server does not take a kid for itself, so four players get four different kids.
 
 ### Does it change my game?
-Lantern installs UE4SS and its join mod into the Grounded 2 game folder when you connect. It does not change the game's own files, and Steam updates the game as usual.
+Lantern adds UE4SS and its join mod to the Grounded 2 game folder when you connect. Each connect also rewrites the game's Engine.ini and adds an intro-movie skip to its Game.ini, in your Grounded 2 settings folder. It does not change the game's own files, and Steam updates the game as usual.
 
 ### Can I bring my own world?
-Yes, on a server running LanternServer 0.1.122 or newer: open the server's **World** window in the app and upload a zip of the save folder from your PC. The server keeps a copy of the current world first and restarts on the uploaded one. On a hosted server, your host can also place it for you.
+Yes. Open the server's World window in the app and upload a zip of the save folder from your PC. The server keeps a copy of the current world first and restarts on the uploaded one. On a hosted server, your host can also place it for you.
 
 ### Can I run the server on the PC I play on?
 No. Self-hosting is not supported yet (see Install), and a Lantern server runs its own copy of Grounded 2 on a separate machine.
