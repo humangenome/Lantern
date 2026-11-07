@@ -87,7 +87,7 @@ Open Lantern, click **+**, and enter a name, the server's IP or hostname, and it
 Up to four. Grounded 2's character select has four kids, and a Lantern server holds four players at most. The server does not take a kid for itself, so four players get four different kids.
 
 ### Does it change my game?
-Lantern adds UE4SS and its join mod to the Grounded 2 game folder when you connect. Each connect also rewrites the game's Engine.ini and adds an intro-movie skip to its Game.ini, in your Grounded 2 settings folder. It does not change the game's own files, and Steam updates the game as usual.
+Lantern adds UE4SS and its join mod to the Grounded 2 game folder when you connect. Each connect also adds an intro-movie skip to the game's Game.ini and puts Lantern's Engine.ini in your Grounded 2 settings folder for the session. When the game closes, Lantern puts back the Engine.ini that was there before, or removes its own. It does not change the game's own files, and Steam updates the game as usual.
 
 ### Can I bring my own world?
 Yes. Open the server's World window in the app and upload a zip of the save folder from your PC. The server keeps a copy of the current world first and restarts on the uploaded one. On a hosted server, your host can also place it for you.
