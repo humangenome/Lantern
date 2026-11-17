@@ -14,28 +14,28 @@
 
 # Lantern
 
-Grounded 2 has no dedicated server. Its multiplayer runs inside one player's game, so the world is only online while that player is playing. Lantern adds a Grounded 2 dedicated server: [LanternServer](https://github.com/HumanGenome/LanternServer) runs the game headless on a Windows machine with a public IP and port, and the Lantern app connects players to it by address.
+Grounded 2 has no dedicated server. Its multiplayer runs inside one player's game, so the world is only online while that player is playing. Lantern adds a Grounded 2 dedicated server. Players join it by IP with the Lantern app.
 
-Every player must install Lantern to join a Lantern server. Stock Grounded 2 cannot connect to a Lantern server directly.
+Every player needs the Lantern app to join.
 
 ## Features
 
-### 🏮 Join by address
-Add the server's address and gameplay port in the app and click Connect. The app puts its join mod next to your game files, starts Grounded 2 and joins the server. The server list shows whether each server is up, its ping and how many players are on it. If the server has a password, the app asks for it once and checks it before it starts the game; a player without the right password is sent back to the menu.
+### 🏮 Join by IP
+Add the server's IP and port in the app and press **Connect**. Lantern starts Grounded 2 and joins the server. The server list shows whether each server is up, how many players are on it and your ping. If the server has a password, the app asks for it once, then remembers it.
 
 <p align="center">
   <img src="docs/img/app-v0.1.130-servers.png" alt="The Lantern app with two saved Grounded 2 servers online, who is on the selected one, their ping, and the Connect button" width="860">
 </p>
 
 ### 💾 World backups
-LanternServer saves a snapshot of the world when you run `save snapshot` in the Console, and before every restore or upload. The app's World window lists them, rolls the world back to one, or uploads a Grounded 2 save from your PC so the group carries on from it. It asks before it replaces the world.
+Type `save snapshot` in the Console to back up the world. The server also backs it up before every restore or upload. The app's **World** window lists the backups, restores one, or uploads a Grounded 2 save from your PC. It asks before it replaces the world.
 
 <p align="center">
   <img src="docs/img/app-v0.1.130-world.png" alt="The Lantern World window: a server's snapshots with Refresh, Download and Restore, and the import button" width="600">
 </p>
 
-### 🖥️ Console in the app
-The Console tab talks to the server's RCON port with the admin password: `status`, `players`, `save snapshot` and `save list`, without a separate RCON tool.
+### 🖥️ Server console
+Type admin commands in the app's **Console** tab with the server's admin password: `status`, `players`, `save snapshot` and `save list`. No separate RCON tool needed.
 
 <p align="center">
   <img src="docs/img/app-v0.1.130-console.png" alt="The Lantern Console tab connected to a server, after the status and players commands" width="860">
@@ -43,70 +43,67 @@ The Console tab talks to the server's RCON port with the admin password: `status
 
 ### Also on the server
 - **Mods:** UE4SS Lua mods load on both the server and the players' games. See [docs/MODS.md](docs/MODS.md).
-- **Server query:** LanternServer answers Source A2S query, so server lists, monitoring tools and Discord bots can read the server's name, status and player count.
+- **Shows up in server lists:** server lists, monitoring tools and Discord bots can read the server's name, status and player count.
 
 ## Install
 
 ### Rent a server
-[SurvivalServers.com Grounded 2 hosting](https://www.survivalservers.com/services/game_servers/grounded2/?utm_source=github&utm_medium=readme_install&utm_campaign=lantern) runs LanternServer for you, handles the ports and updates, and its panel gives players a one-click Lantern setup link.
+[SurvivalServers.com](https://www.survivalservers.com/services/game_servers/grounded2/?utm_source=github&utm_medium=readme_install&utm_campaign=lantern) runs Grounded 2 servers with LanternServer installed.
 
 ### Players
 Lantern works with the Steam version of Grounded 2 on Windows. Xbox, PlayStation and Game Pass or Microsoft Store copies cannot join a Lantern server.
 
 1. Download `LanternSetup-latest.exe` from the [latest release](https://github.com/HumanGenome/Lantern/releases/latest).
-2. Run the installer. Windows SmartScreen may warn because the installer is not code-signed; choose **More info**, then **Run anyway**.
-3. Open Lantern, click **+**, enter the server's address and gameplay port, then select it and click **Connect**.
+2. Run it. At "Windows protected your PC" choose **More info**, then **Run anyway**.
+3. Open Lantern, press **+** and enter the server's IP and port. Select it and press **Connect**.
 
-### Self-hosted servers
-Not supported yet. The server package only runs with the per-server setup a hosting panel does around it, and started on its own it never opens a server port ([details](https://github.com/HumanGenome/LanternServer#self-hosting)). Settings, ports and RCON commands for a rented server are in [docs/ADMIN.md](docs/ADMIN.md).
+### Host your own
+Not supported yet: the server download only works with the setup a hosting panel does around it ([details](https://github.com/HumanGenome/LanternServer#host-your-own)). Settings, ports and console commands for a rented server are in [docs/ADMIN.md](docs/ADMIN.md).
 
 ## Releases
 
-This release page carries the player downloads:
+Each release has:
 
-- `LanternSetup-<version>.exe`: installer
+- `LanternSetup-<version>.exe`: the installer
 - `LanternSetup-latest.exe`: the same installer at a link that never changes
 - `Lantern-Launcher-Windows-x64-v<version>.zip`: the app without an installer
 - `checksums-launcher.txt`: SHA-256 hashes for the files above
 
-The server package (`LanternServer-v<version>.zip`) is published on the [LanternServer release page](https://github.com/HumanGenome/LanternServer/releases/latest). To play on someone else's server you only need the installer.
+The server download (`LanternServer-v<version>.zip`) is on the [LanternServer release page](https://github.com/HumanGenome/LanternServer/releases/latest).
 
 ## Source
 
-The server's .NET source is public at [HumanGenome/LanternServer](https://github.com/HumanGenome/LanternServer). The app and the in-game runtime ship as release binaries from this repo.
+The server's source is at [HumanGenome/LanternServer](https://github.com/HumanGenome/LanternServer). The app ships as release files from this repo.
 
 ## FAQ
 
 ### Which copy of Grounded 2 do players need?
-The Steam version on a Windows PC. Lantern is built and tested against the Steam release, so Xbox, PlayStation and Game Pass or Microsoft Store copies cannot join, and neither can crossplay friends on those platforms.
+The Steam version on a Windows PC. Xbox, PlayStation, Game Pass and Microsoft Store copies can't join, so crossplay friends on those can't either.
 
 ### How do I join a server?
-Open Lantern, click **+**, and enter a name, the server's IP or hostname, and its gameplay port. Lantern finds the query, RCON and admin ports from the gameplay port, so you enter only the one port. Select the server and click **Connect**.
+Press **+** in Lantern and enter a name, the server's IP and its port. You only enter the game port. Lantern works out the others. Select the server and press **Connect**.
 
 ### How many players can join?
-Up to four. Grounded 2's character select has four kids, and a Lantern server holds four players at most. The server does not take a kid for itself, so four players get four different kids.
+Up to 4. Grounded 2 has four kids to pick from, and the server doesn't take one for itself, so 4 players get 4 different kids.
 
 ### Does it change my game?
 Lantern adds UE4SS and its join mod to the Grounded 2 game folder when you connect. Each connect also adds an intro-movie skip to the game's Game.ini and puts Lantern's Engine.ini in your Grounded 2 settings folder for the session. When the game closes, Lantern puts back the Engine.ini that was there before, or removes its own. It does not change the game's own files, and Steam updates the game as usual.
 
 ### Can I bring my own world?
-Yes. Open the server's World window in the app and upload a zip of the save folder from your PC. The server keeps a copy of the current world first and restarts on the uploaded one. On a hosted server, your host can also place it for you.
+Yes. In the server's **World** window, upload a zip of the save folder from your PC. The server backs up the current world first, then restarts on yours. On a rented server, your host can also load it for you.
 
 ### Can I run the server on the PC I play on?
 No. Self-hosting is not supported yet (see Install), and a Lantern server runs its own copy of Grounded 2 on a separate machine.
 
 ### Does the app update itself?
-Yes. It checks for new versions while it runs, verifies each signed download and installs it when you close the app.
+Yes. It checks for a new version when it starts and every 5 minutes, and verifies each signed download. Then it restarts itself on the new version within seconds. If Grounded 2 is running or you're joining a server, it waits until the game closes.
 
 ### Is Linux supported?
 No. The app and the server are Windows only (Windows 10/11 or Windows Server, 64-bit), because the server runs the Windows build of Grounded 2.
 
-### Is this official?
-No. Lantern is an independent project. Obsidian Entertainment does not ship dedicated servers for Grounded 2.
-
 ## Contributing
 
-Bug reports and feature requests go in [GitHub Issues](https://github.com/HumanGenome/Lantern/issues). Include the Lantern version from the About screen and, for a join problem, the log from `%APPDATA%\Lantern`. Security problems go through [private vulnerability reporting](https://github.com/HumanGenome/Lantern/security/advisories/new), not a public issue. Questions about a hosted server go to your hosting provider.
+Bugs: open an [issue](https://github.com/HumanGenome/Lantern/issues) with your Lantern version (from About) and, for a join problem, the log from `%APPDATA%\Lantern`. Security problems go through [private reporting](https://github.com/HumanGenome/Lantern/security/advisories/new).
 
 ## Community note
 

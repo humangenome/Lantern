@@ -24,8 +24,8 @@ this for the shipped packages).
 
 - `g2_sshost` (host): drives the host through the lobby into the saved or new
   world and keeps the connected players with it.
-- `LanternConnect` (client): issues `open <ip>:<port>` to join, and waits for
-  the game's own sign-in and main menu before it does.
+- `LanternConnect` (client): waits for the game's own sign-in and main menu,
+  then joins the server at the address the app gives it.
 
 ## Writing your own
 
