@@ -57,6 +57,8 @@ Lantern works with the Steam version of Grounded 2 on Windows. Xbox, PlayStation
 2. Run it. At "Windows protected your PC" choose **More info**, then **Run anyway**.
 3. Open Lantern, press **+** and enter the server's IP and port. Select it and press **Connect**.
 
+If Windows says Smart App Control blocked the installer, wait a day or two for Windows to recognize the new version and run it again, or turn Smart App Control off in Windows Security under App & browser control.
+
 ### Host your own
 Not supported yet: the server download only works with the setup a hosting panel does around it ([details](https://github.com/HumanGenome/LanternServer#host-your-own)). Settings, ports and console commands for a rented server are in [docs/ADMIN.md](docs/ADMIN.md).
 
