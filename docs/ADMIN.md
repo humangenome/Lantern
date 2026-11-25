@@ -33,13 +33,13 @@ The `Lantern` block carries the per-instance config. At minimum set:
 | Offset | Default | Purpose | Proto |
 |--------|---------|---------|-------|
 | +0 | 7777 | Gameplay (the join port) | UDP |
-| +1 | 7778 | Control / IPC identifier (local only) | none |
+| +1 | 7778 | Reserved, unused | none |
 | +2 | 7779 | Server query (A2S) | UDP |
 | +3 | 7780 | RCON | TCP |
 | +4 | 7781 | Admin HTTP API | TCP |
 
-Open/forward each externally-reachable port (+0, +2, +3, +4). The control port
-(+1) is a local IPC identifier and needs no firewall rule. The gameplay UDP
+Open/forward each externally-reachable port (+0, +2, +3, +4). The reserved port
+(+1) is not listened on and needs no firewall rule. The gameplay UDP
 port in particular needs a Windows Defender inbound allow rule, or players can't
 reach the listen socket.
 

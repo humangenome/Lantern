@@ -59,7 +59,7 @@ Lantern works with the Steam version of Grounded 2 on Windows. Xbox, PlayStation
 
 If Windows says Smart App Control blocked the installer, wait a day or two for Windows to recognize the new version and run it again, or turn Smart App Control off in Windows Security under App & browser control.
 
-If the app closes to update and then won't open, download the installer from our website and run it again.
+If the app closes to update and then won't open, download `LanternSetup-latest.exe` from the [latest release](https://github.com/HumanGenome/Lantern/releases/latest) and run it again.
 
 ### Host your own
 Not supported yet: the server download only works with the setup a hosting panel does around it ([details](https://github.com/HumanGenome/LanternServer#host-your-own)). Settings, ports and console commands for a rented server are in [docs/ADMIN.md](docs/ADMIN.md).
